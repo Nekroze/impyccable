@@ -59,7 +59,7 @@ def Boolean():
     Returns a generator that endlessly returns random True or False values.
     """
     while True:
-        yield random.choice([True, False])
+        yield random.choice((True, False))
 
 
 # Collections
