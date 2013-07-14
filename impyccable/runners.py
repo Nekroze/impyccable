@@ -55,7 +55,11 @@ class Impyccable(object):
     values from the generators.
     """
     def __init__(self, *args, **kwargs):
-        self.runs = 10 if "runs" not in kwargs else kwargs["runs"]
+        if "runs" in kwargs:
+            self.runs = kwargs["runs"]
+            del kwargs["runs"]
+        else:
+            self.runs = 10
         self.args = _Arger(args, kwargs)
 
     def __call__(self, func):
