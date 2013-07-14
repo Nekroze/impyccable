@@ -2,7 +2,7 @@
 __author__ = 'Taylor "Nekroze" Lawson'
 __email__ = 'nekroze@eturnilnetwork.com'
 import random
-import string
+from string import printable
 import sys
 
 
@@ -15,7 +15,7 @@ LIST_LEN = 30
 
 
 # Basic Types
-def String(least=0, most=LIST_LEN, valid=None):
+def String(least=0, most=LIST_LEN, valid=printable):
     """
     Returns a generator that will endlessly pump out random strings of a length
     >= least and <= most, constiting of strings/chars from the valid selection.
@@ -23,8 +23,6 @@ def String(least=0, most=LIST_LEN, valid=None):
     The valid argument should be a list of string or a string of characters and
     defaults to all printable characters as defined in ``string.printable``.
     """
-    if valid is None:
-        valid = string.printable
     while True:
         length = random.randint(least, most)
         yield ''.join([random.choice(valid) for _ in range(length)])
@@ -57,3 +55,32 @@ def Boolean():
 
 
 # Collections
+def List(element, least=1, most=LIST_LEN):
+    """
+    Returns a generator that yields random lists from the given element
+    generator. Lists can be given a upper and lower bound length.
+    """
+    while True:
+        length = random.randint(least, most)
+        yield [next(element) for _ in range(length)]
+
+
+def Tuple(*args):
+    """
+    Returns a generator that yields random tuples of the given element
+    generator of the given length.
+
+    Arguments defined after the length are assumed to be generators used for
+    values to store in the returned tuples.
+    """
+    while True:
+        yield tuple([next(element) for element in args])
+
+
+def Dictionary(gendict):
+    """
+    Returns a generator that endlessly yields dictionaries with the given keys
+    and values derived from a dictionary of value generators.
+    """
+    while True:
+        yield {key: next(val) for key, val in gendict.items}
