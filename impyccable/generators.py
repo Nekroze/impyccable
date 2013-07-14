@@ -15,6 +15,13 @@ LIST_LEN = 30
 
 
 # Basic Types
+def Value(val):
+    """
+    Returns a generator that will endlessly spew out the same value.
+    """
+    while True:
+        yield val
+
 def String(least=0, most=LIST_LEN, valid=printable):
     """
     Returns a generator that will endlessly pump out random strings of a length
