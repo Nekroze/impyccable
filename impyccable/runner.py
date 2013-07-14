@@ -22,7 +22,7 @@ class _Arger(object):
         """
         Returns a keyword argument dictionary from stored generators.
         """
-        return {kw: next(arg) for kw, arg in self._kwargs.items}
+        return {kw: next(arg) for kw, arg in self._kwargs.items()}
 
 
 class Runner(object):

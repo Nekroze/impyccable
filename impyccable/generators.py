@@ -83,4 +83,4 @@ def Dictionary(gendict):
     and values derived from a dictionary of value generators.
     """
     while True:
-        yield {key: next(val) for key, val in gendict.items}
+        yield {key: next(val) for key, val in gendict.items()}
