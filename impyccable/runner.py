@@ -51,11 +51,12 @@ class Impyccable(object):
     optional integer to repeat the call to the underlying fuction from new
     values from the generators.
     """
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, runs=5, **kwargs):
         self.args = _Arger(args, kwargs)
+        self.runs = runs
 
     def __call__(self, func):
-        def wrapped(runs=5):
-            for _ in range(runs):
+        def wrapped(runs=None):
+            for _ in range(self.runs if runs is None else runs):
                 func(*self.args.args(), **self.args.kwargs())
         return wrapped
