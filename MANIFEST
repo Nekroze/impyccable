@@ -3,4 +3,5 @@ README.rst
 setup.py
 impyccable/__init__.py
 impyccable/generators.py
-impyccable/runner.py
+impyccable/runners.py
+test/test_generators.py
