@@ -22,6 +22,7 @@ def Value(val):
     while True:
         yield val
 
+
 def String(least=0, most=LIST_LEN, valid=printable):
     """
     Returns a generator that will endlessly pump out random strings of a length
