@@ -23,6 +23,14 @@ def Value(val):
         yield val
 
 
+def Choice(choices):
+    """
+    Returns a generator that will endlessly spew out a random choice.
+    """
+    while True:
+        yield random.choice(choices)
+
+
 def String(least=0, most=LIST_LEN, valid=printable):
     """
     Returns a generator that will endlessly pump out random strings of a length
