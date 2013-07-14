@@ -33,10 +33,29 @@ class Runner(object):
         self.func = func
         self.args = _Arger(args, kwargs)
 
-    def call(self, runs=1):
+    def __call__(self, runs=1):
         """
         Call the stored function with arguments pulled from generates with
         optional repetition.
         """
         for _ in range(runs):
             self.func(*self.args.args(), **self.args.kwargs())
+
+
+class Impyccable(object):
+    """
+    A function decorator to provide Impyccable testing and takes generator
+    arguments corrosponding to the functions paramaters.
+
+    Once decorated the function may be called without arguments but with an
+    optional integer to repeat the call to the underlying fuction from new
+    values from the generators.
+    """
+    def __init__(self, *args, **kwargs):
+        self.args = _Arger(args, kwargs)
+
+    def __call__(self, func):
+        def wrapped(runs=5):
+            for _ in range(runs):
+                func(*self.args.args(), **self.args.kwargs())
+        return wrapped

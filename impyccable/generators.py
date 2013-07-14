@@ -48,7 +48,7 @@ def Float(least=MIN_FLOAT, most=MAX_FLOAT):
 
 def Boolean():
     """
-    Returns a generator that endlessly returns random True or False.
+    Returns a generator that endlessly returns random True or False values.
     """
     while True:
         yield random.choice([True, False])
