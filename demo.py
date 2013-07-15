@@ -1,12 +1,12 @@
 from impyccable.generators import Boolean, Integer
-from impyccable.runner import Impyccable, Runner
+from impyccable.runners import Impyccable, Runner
 
 print("===\nDecorator\n===")
 @Impyccable(Boolean())
 def test(val):
     print(val)
 
-test(5)
+test(runs=5)
 
 print("===\nRunner\n===")
 def test2(val):
