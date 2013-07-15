@@ -1,6 +1,5 @@
 from impyccable.generators import *
 from impyccable.runners import Impyccable
-import string
 
 
 TEST_RUNS = 100
@@ -16,11 +15,11 @@ def test_Float(val):
     assert val in [2,3,4]
 
 
-@Impyccable(String(0, 10, string.lowercase), runs=TEST_RUNS)
+@Impyccable(String(0, 10, "abcdefghijklmnopqrstuvwxyz"), runs=TEST_RUNS)
 def test_String(val):
     assert 0 <= len(val) <= 10
     for char in val:
-        assert char in string.lowercase
+        assert char.islower()
 
 
 @Impyccable(Integer(0, 10), runs=TEST_RUNS)
