@@ -6,7 +6,7 @@ import platform
 from distutils.core import setup, Command
 
 
-__version__ = '0.1.0'
+__version__ = '1.0.0'
 __author__ = 'Taylor "Nekroze" Lawson'
 __email__ = 'nekroze@eturnilnetwork.com'
 SOURCE = 'impyccable'
@@ -127,7 +127,7 @@ class PyPiUpload(Command):
             sys.exit(1)
         print('PyPi Upload successful.')
 
-			
+
 vRe = re.compile(r'__version__\s*=\s*(\S+)', re.M)
 data = open('setup.py').read()
 
@@ -154,7 +154,16 @@ setup(
     packages=[SOURCE],
     ext_modules = EXTENSIONS,
     classifiers=[
-        # DEFINE YOURSELF
-    ],
+        'Development Status :: 4 - Beta',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python :: 3.2',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 2.6',
+        'Programming Language :: Python :: Implementation :: PyPy',
+        'Topic :: Software Development :: Testing',
+        'Topic :: Software Development :: Testing :: Traffic Generation'
+        ],
     **kwds
 )
