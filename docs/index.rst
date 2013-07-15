@@ -26,7 +26,7 @@ provides a capable set of random data generators that can be used on its own.
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
 
    usage
    runners
@@ -38,3 +38,9 @@ Feedback
 
 If you have any suggestions or questions about ``Impyccable`` feel free to
 email me at nekroze@eturnilnetwork.com.
+
+You can check out more of what I am doing at http://nekroze.eturnilnetwork.com
+my blog.
+
+If you encounter any errors or problems with ``Impyccable``, please let me know!
+Open an Issue at the GitHub http://github.com/Nekroze/impyccable main repository.
