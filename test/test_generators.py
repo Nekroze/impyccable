@@ -2,7 +2,7 @@ from impyccable.generators import *
 from impyccable.runners import Impyccable
 
 
-TEST_RUNS = 100
+TEST_RUNS = 1000
 
 
 @Impyccable(Value(5), runs=TEST_RUNS)
