@@ -64,9 +64,12 @@ class Impyccable(object):
 
     def __call__(self, func):
         def Wrapped(runs=None):
-            """Calls the wrapped function with optional repition using stored
+            """
+            Calls the wrapped function with optional repition using stored
             argument data generators.
             """
             for _ in range(self.runs if not isinstance(runs, int) else runs):
                 func(*self.args.args(), **self.args.kwargs())
+        Wrapped.__doc__ = func.__doc__
+        Wrapped.__name__ = func.__name__
         return Wrapped
