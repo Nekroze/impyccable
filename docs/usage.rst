@@ -8,7 +8,7 @@ function with the structure of the required data set.
 The following is a simple test from ``Impyccable`` itself that demonstrates
 both methods of running Impyccable tests.
 
-.. literalinclude:: ../test/test_runners.py
+.. literalinclude:: ../demo.py
     :language: python
     :linenos:
 
