@@ -59,12 +59,13 @@ class Impyccable(object):
         self.args = _Arger(args, kwargs)
 
     def __call__(self, func):
-        def Wrapped(*args,runs=None):
+        def Wrapped(*args, **kwargs):
             """
             Calls the wrapped function with optional repition using stored
             argument data generators.
             """
-            for _ in range(self.runs if not isinstance(runs, int) else runs):
+            runs = kwargs.pop("runs", self.runs)
+            for _ in range(runs):
                 func(*(list(args)+self.args.args()), **self.args.kwargs())
         Wrapped.__doc__ = func.__doc__
         Wrapped.__name__ = func.__name__
