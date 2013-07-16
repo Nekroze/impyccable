@@ -25,6 +25,16 @@ class GeneratorTests(TestCase):
             self.assertTrue(char.islower())
 
 
+    @Impyccable(Words(2, 2, 4, 4, "abcdefghijklmnopqrstuvwxyz"), runs=TEST_RUNS)
+    def test_Words(self, val):
+        words = val.split(' ')
+        self.assertEqual(len(words), 4)
+
+        for word in words:
+            self.assertTrue(word.islower())
+            self.assertEqual(len(word), 2)
+
+
     @Impyccable(Integer(0, 10), runs=TEST_RUNS)
     def test_Integer(self, val):
         self.assertTrue(0 <= val <= 10)

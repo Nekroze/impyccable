@@ -44,6 +44,20 @@ def String(least=0, most=LIST_LEN, valid=printable):
         yield ''.join([random.choice(valid) for _ in range(length)])
 
 
+def Words(leastchar=1, mostchar=LIST_LEN, leastwords=0, mostwords=LIST_LEN,
+          valid=printable):
+    """
+    Returns a generator that puts together a string of "words" made of valid
+    characters. This works very similar to the String generator but every so
+    many characters a space is inserted and a new word started for a random
+    amount of words.
+    """
+    while True:
+        words = random.randint(leastwords, mostwords)
+        word = String(leastchar, mostchar, valid)
+        yield ' '.join([next(word) for _ in range(words)])
+
+
 def Integer(least=MIN_INT, most=MAX_INT):
     """
     Returns a generator that endlessly returns random integers >= lest and <=
