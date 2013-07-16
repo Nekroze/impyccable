@@ -2,7 +2,7 @@ from impyccable.generators import Boolean, Integer
 from impyccable.runners import Impyccable, Runner
 
 print("===\nDecorator\n===")
-@Impyccable(Boolean())
+@Impyccable(bool)
 def test(val):
     print(val)
 

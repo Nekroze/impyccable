@@ -32,6 +32,8 @@ Contents:
    runners
    generators
 
+   changelog
+
 
 Feedback
 ========
