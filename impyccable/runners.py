@@ -54,6 +54,11 @@ class Impyccable(object):
     Once decorated the function may be called without arguments but with an
     optional integer to repeat the call to the underlying fuction from new
     values from the generators.
+
+    However if any arguments are given to the call they will be passed along
+    before any randomly generated arguments. This allows for methods to be
+    tested by passing along the ``self`` instance as the first argument but can
+    be used in other ways.
     """
     def __init__(self, *args, **kwargs):
         self.runs = kwargs.pop("runs", 10)
