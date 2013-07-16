@@ -1,4 +1,4 @@
-Usage
+[6~Usage
 =====
 
 ``Impyccable`` is designed for use with any unit-testing framework. As such the
@@ -24,6 +24,6 @@ real data, but to instead have ``Impyccable`` generators as values.
 
 When a decorated function or a runner object is called it will instead run the
 data tests without requiring any arguments in the call. Although, the number of
-runs can be defined here as well as in the decorator or ``Runner``construction.
+runs can be defined here as well as in the decorator or ``Runner`` construction.
 
 There are multiple useful :mod:`impyccable.generators` to use.
