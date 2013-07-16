@@ -29,6 +29,10 @@ class _Arger(object):
 class Runner(object):
     """
     Stores a given function and argument generators to execute when asked.
+
+    The resulting object is callable and can take a runs key word argument or
+    pass along any other arguments given to it before the ``Impyccable``
+    generated data.
     """
     def __init__(self, func, *args, **kwargs):
         self.func = func
