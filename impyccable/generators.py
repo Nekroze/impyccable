@@ -100,9 +100,10 @@ def List(element, least=1, most=LIST_LEN):
     Returns a generator that yields random lists from the given element
     generator. Lists can be given a upper and lower bound length.
     """
+    geny = Typer(element)
     while True:
         length = random.randint(least, most)
-        yield [next(element) for _ in range(length)]
+        yield [next(geny) for _ in range(length)]
 
 
 def Tuple(*args):
@@ -113,8 +114,9 @@ def Tuple(*args):
     Arguments defined after the length are assumed to be generators used for
     values to store in the returned tuples.
     """
+    geny = [Typer(arg) for arg in args]
     while True:
-        yield tuple([next(element) for element in args])
+        yield tuple([next(element) for element in geny])
 
 
 def Dictionary(gendict):
@@ -122,8 +124,9 @@ def Dictionary(gendict):
     Returns a generator that endlessly yields dictionaries with the given keys
     and values derived from a dictionary of value generators.
     """
+    geny = {key: Typer(arg) for key, val in gendict.items()}
     while True:
-        yield {key: next(val) for key, val in gendict.items()}
+        yield {key: next(val) for key, val in geny.items()}
 
 
 # Generator Constructors
