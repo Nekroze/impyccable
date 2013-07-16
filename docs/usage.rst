@@ -1,4 +1,4 @@
-[6~Usage
+Usage
 =====
 
 ``Impyccable`` is designed for use with any unit-testing framework. As such the
