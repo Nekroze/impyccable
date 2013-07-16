@@ -124,7 +124,7 @@ def Dictionary(gendict):
     Returns a generator that endlessly yields dictionaries with the given keys
     and values derived from a dictionary of value generators.
     """
-    geny = {key: Typer(arg) for key, val in gendict.items()}
+    geny = {key: Typer(arg) for key, arg in gendict.items()}
     while True:
         yield {key: next(val) for key, val in geny.items()}
 
@@ -156,7 +156,9 @@ def Typer(arg):
     """
     if isinstance(arg, GeneratorType):
         return arg
+    elif arg in GEN_MAP:
+        return GEN_MAP[arg]()
     elif hasattr(arg, "__call__"):
         return Function(arg)
     else:
-        return GEN_MAP.get(arg, Value(arg))
+        return Value(arg)
