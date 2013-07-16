@@ -12,6 +12,10 @@ class GeneratorTests(TestCase):
     def test_Value(self, val):
         self.assertEqual(val, 5)
 
+    @Impyccable(Function(lambda : 10), runs=TEST_RUNS)
+    def test_Value(self, val):
+        self.assertEqual(val, 10)
+
 
     @Impyccable(Choice([2,3,4]), runs=TEST_RUNS)
     def test_Float(self, val):
@@ -68,3 +72,11 @@ class GeneratorTests(TestCase):
         self.assertIsInstance(val["a"], bool)
         self.assertIn("z", val)
         self.assertIsInstance(val["z"], str)
+
+
+    #@Impyccable(Typer(str, int, float, bool), runs=TEST_RUNS)
+    def test_Typer(self, string, integer, floating, boolean):
+        self.assertTrue(string.isprintable())
+        self.assertIsInstance(integer, int)
+        self.assertIsInstance(floating, float)
+        self.assertIsInstance(boolean, bool)

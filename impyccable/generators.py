@@ -23,6 +23,15 @@ def Value(val):
         yield val
 
 
+def Function(val):
+    """
+    Returns a generator that will call a function and endlessly yield the
+    return value.
+    """
+    while True:
+        yield val()
+
+
 def Choice(choices):
     """
     Returns a generator that will endlessly spew out a random choice.
@@ -114,3 +123,24 @@ def Dictionary(gendict):
     """
     while True:
         yield {key: next(val) for key, val in gendict.items()}
+
+
+# Generator Constructors
+GEN_MAP = {
+    str: String,
+    int: Integer,
+    float: Float,
+    bool: Boolean,
+    }
+
+
+def Typer(*args, **kwargs):
+    """
+    The typer can take a any number of arguments of types (str, int, foat,
+    bool) and create a default generator for them. If the argument is not a
+    valid generator type a ``Value`` generator will be constructed for it
+    instead.
+    """
+    genargs = [GEN_MAP.get(arg, Value(arg)) for arg in args]
+    genkwargs = {key: GEN_MAP.get(arg, Value(arg)) for key, arg in kwargs}
+    return genargs, genkwargs
