@@ -1,6 +1,7 @@
 """Test runner."""
 __author__ = 'Taylor "Nekroze" Lawson'
 __email__ = 'nekroze@eturnilnetwork.com'
+from .generators import Typer
 
 
 class _Arger(object):
@@ -9,8 +10,8 @@ class _Arger(object):
     those generators.
     """
     def __init__(self, args, kwargs):
-        self._args = args
-        self._kwargs = kwargs
+        self._args = [Typer(arg) for arg in args]
+        self._kwargs = {key: Typer(arg) for key, arg in kwargs.items()}
 
     def args(self):
         """

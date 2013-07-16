@@ -74,9 +74,9 @@ class GeneratorTests(TestCase):
         self.assertIsInstance(val["z"], str)
 
 
-    #@Impyccable(Typer(str, int, float, bool), runs=TEST_RUNS)
+    @Impyccable(str, int, float, bool, runs=TEST_RUNS)
     def test_Typer(self, string, integer, floating, boolean):
-        self.assertTrue(string.isprintable())
+        self.assertIsInstance(string, str)
         self.assertIsInstance(integer, int)
         self.assertIsInstance(floating, float)
         self.assertIsInstance(boolean, bool)

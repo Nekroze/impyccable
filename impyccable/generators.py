@@ -4,6 +4,7 @@ __email__ = 'nekroze@eturnilnetwork.com'
 import random
 from string import printable
 import sys
+from types import GeneratorType
 
 
 # Constants
@@ -134,13 +135,25 @@ GEN_MAP = {
     }
 
 
-def Typer(*args, **kwargs):
+def Typer(arg):
     """
-    The typer can take a any number of arguments of types (str, int, foat,
-    bool) and create a default generator for them. If the argument is not a
-    valid generator type a ``Value`` generator will be constructed for it
-    instead.
+    Typer is designed to take a data description and turn it into an Impyccable
+    compatable generator.
+
+    Any form of python generator will be returned including Impyccable
+    generators and are expected to be able to yield an arbitrary amount of
+    values. If the given argument is a value it will be wrapped in an
+    Impyccable ``Value`` generator. If the argument is callable then it will be
+    wrapped in a ``Function`` generator. Finally if the argument is a basic
+    type (str, int, float, bool) then it will return the default Impyccable
+    generators for those types.
+
+    This function is used internally by the Impyccable runners and is not
+    designed for standalone usage.
     """
-    genargs = [GEN_MAP.get(arg, Value(arg)) for arg in args]
-    genkwargs = {key: GEN_MAP.get(arg, Value(arg)) for key, arg in kwargs}
-    return genargs, genkwargs
+    if isinstance(arg, GeneratorType):
+        return arg
+    elif hasattr(arg, "__call__"):
+        return Function(arg)
+    else:
+        return GEN_MAP.get(arg, Value(arg))
