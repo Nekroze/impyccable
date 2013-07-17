@@ -12,13 +12,14 @@ class GeneratorTests(TestCase):
     def test_Value(self, val):
         self.assertEqual(val, 5)
 
+
     @Impyccable(Function(lambda : 10), runs=TEST_RUNS)
-    def test_Value(self, val):
+    def test_Function(self, val):
         self.assertEqual(val, 10)
 
 
     @Impyccable(Choice([2,3,4]), runs=TEST_RUNS)
-    def test_Float(self, val):
+    def test_Choice(self, val):
         self.assertIn(val, [2,3,4])
 
 
@@ -27,16 +28,6 @@ class GeneratorTests(TestCase):
         self.assertTrue(0 <= len(val) <= 10)
         for char in val:
             self.assertTrue(char.islower())
-
-
-    @Impyccable(Words(2, 2, 4, 4, "abcdefghijklmnopqrstuvwxyz"), runs=TEST_RUNS)
-    def test_Words(self, val):
-        words = val.split(' ')
-        self.assertEqual(len(words), 4)
-
-        for word in words:
-            self.assertTrue(word.islower())
-            self.assertEqual(len(word), 2)
 
 
     @Impyccable(Integer(0, 10), runs=TEST_RUNS)
@@ -74,9 +65,8 @@ class GeneratorTests(TestCase):
         self.assertIsInstance(val["z"], str)
 
 
-    @Impyccable(str, int, float, bool, runs=TEST_RUNS)
-    def test_Typer(self, string, integer, floating, boolean):
+    @Impyccable(str, Integer, lambda : "a", runs=TEST_RUNS)
+    def test_Dictionary(self, string, integer, letter):
         self.assertIsInstance(string, str)
         self.assertIsInstance(integer, int)
-        self.assertIsInstance(floating, float)
-        self.assertIsInstance(boolean, bool)
+        self.assertEqual(letter, "a")
