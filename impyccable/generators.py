@@ -135,6 +135,11 @@ GEN_MAP = {
     int: Integer,
     float: Float,
     bool: Boolean,
+    String: String,
+    Words: Words,
+    Integer: Integer,
+    Float: Float,
+    Boolean: Boolean
     }
 
 
